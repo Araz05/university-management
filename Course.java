@@ -1,99 +1,138 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Course {
 
-    protected int id;
-    private int number;
-    private String school;
-    String instructor;
-    private int minCredits;
-    Degree degree;
-    private boolean status;
-
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public int getMinCredits() {
-        return minCredits;
-    }
-
-    public void setCredits(int minCredits) {
-        this.minCredits = minCredits;
-    }
-
-    public String getInstructor() {
-        return instructor;
-    }
-
-    public void setInstructor(String instructor) {
-        this.instructor = instructor;
-    }
-
-   
+    private String name;
+    private String description;
+    private int courseCode;
+    private int credits;
+    private int numberOfStudents;
+    private char passingGrade;
+    private String[] studentNames;
+    private String[] topics;
+    private int[] prerequisiteCourses;
+    private List<Course> courses = new ArrayList<>();
 
     public Course() {
-        // empty constructor
-    }
-
-    public Course(String school, int number) {
-        this.school = school;
-        this.number = number;
 
     }
 
-    public Course(String school, int number,Degree degree) {
-        this.school = school;
-        this.number = number;
-        this.degree = degree;
-
+    public Course(String name, String description, int courseCode, int credits, int numberOfStudents,
+            char passingGrade, String[] studentNames, String[] topics, int[] prerequisiteCourses) {
+        this.name = name;
+        this.description = description;
+        this.courseCode = courseCode;
+        this.credits = credits;
+        this.numberOfStudents = numberOfStudents;
+        this.passingGrade = passingGrade;
+        this.studentNames = studentNames;
+        this.topics = topics;
+        this.prerequisiteCourses = prerequisiteCourses;
     }
 
-   
-    
-        public String getSchool() {
-            return school;
-        }
-    
-        public void setSchool(String school) {
-            this.school = school;
-        }
-    
-        public int getNumber() {
-            return number;
-        }
-    
-        public void setNumber(int number) {
-            this.number = number;
-        }
-    
-        public Degree getDegree() {
-            return degree;
-        }
-    
-        public void setDegree(Degree degree) {
-            this.degree = degree;
-        }
-    
-        @Override
-        public String toString() {
-            return "Course [id=" + id + ", number=" + number + ", school=" + school + ", instructor=" + instructor
-                    + ", credits=" + minCredits + ", degree=" + degree + "]";
-        }
-    
-        public boolean canEnroll(int studentCredits){
-            if(studentCredits >= minCredits){
-                return true;
-            }
-            return false;
-        }
-        public boolean isActive(boolean status){
-            return status;
-        }
-        public static void main(String[] args) {
-            Course course = new Course("CS", 20122, Degree.UNDERGRADUATE);
-            
-        System.out.println(course);
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Course{")
+                .append("name='").append(name).append('\'')
+                .append(", description='").append(description).append('\'')
+                .append(", courseCode=").append(courseCode)
+                .append(", credits=").append(credits)
+                .append(", numberOfStudents=").append(numberOfStudents)
+                .append(", passingGrade=").append(passingGrade)
+                .append('}');
+        return sb.toString();
+    }
 
+    public List<Course> getCourses() {
+        return this.courses;
+    }
+
+    public void setCourse(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(int courseCode) {
+        this.courseCode = courseCode;
+    }
+
+    public int getcredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
+    }
+
+    public int getNumberOfStudents() {
+        return numberOfStudents;
+    }
+
+    public void setNumberOfStudents(int numberOfStudents) {
+        this.numberOfStudents = numberOfStudents;
+    }
+
+    public char getPassingGrade() {
+        return passingGrade;
+    }
+
+    public void setPassingGrade(char passingGrade) {
+        this.passingGrade = passingGrade;
+    }
+    
+    public void setStudentNames(String[] studentNames) {
+        this.studentNames = studentNames;
+    }
+    
+    public String[] getStudentNames() {
+        return studentNames;
+    }
+
+    public void setTopics(String[] topics) {
+        this.topics = topics;
+    }
+    
+    public String[] getTopics() {
+        return topics;
+    }
+
+    public void setPrerequisiteCourses(int[] prerequisiteCourses) {
+        this.prerequisiteCourses = prerequisiteCourses;
+    }
+    
+    public int[] getPrerequisiteCourses() {
+        return prerequisiteCourses;
+    }
+        
+    
+
+    public List<Course> addCourse(String name, String description, int courseCode, int credits, int numberOfStudents,
+            char passingGrade) {
+        Course course = new Course(name, description, courseCode, credits, numberOfStudents, passingGrade, studentNames, topics, prerequisiteCourses);
+        courses.add(course);
+        System.out.println(courses);
+        return courses;
     }
 
 }

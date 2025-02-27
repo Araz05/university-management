@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 import model.Room;
 
-public class Staff extends Person {
+public class Staff extends Person implements Employee{
     private double salary;
     private String status;
     private String position;
@@ -46,5 +46,11 @@ public class Staff extends Person {
           .append("\nDepartment: ").append(department)
           .append("\nSalary: $").append(salary);
         return sb.toString();
+    }
+
+    @Override
+    public LocalDate getHireDate() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getHireDate'");
     }
 }

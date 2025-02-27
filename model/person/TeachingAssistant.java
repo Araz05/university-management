@@ -1,10 +1,11 @@
 package model.person;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import model.Course;
 
-public class TeachingAssistant {
+public class TeachingAssistant implements Employee{
     private Student student;
     private ArrayList<Course> coursesAssisted;
     private Faculty supervisor;
@@ -47,5 +48,10 @@ public class TeachingAssistant {
           .append(", coursesAssisted=").append(coursesAssisted.size()).append(" courses assisted")
           .append('}');
         return sb.toString();
+    }
+
+    @Override
+    public LocalDate getHireDate() {
+        return getHireDate();
     }
 }

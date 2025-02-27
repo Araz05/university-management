@@ -18,6 +18,9 @@ classDiagram
         +boolean equals(Object o)
         +String toString()
     }
+    interface Employee{
+        
+    }
 
     class Faculty {
         +School school

@@ -18,7 +18,9 @@ classDiagram
         +boolean equals(Object o)
         +String toString()
     }
-    interface Employee{
+    class Employee{
+        <<interface>>
+        +LocalDate getHireDate()
         
     }
 

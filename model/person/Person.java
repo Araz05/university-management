@@ -2,8 +2,9 @@ package model.person;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.regex.Pattern;
 
-public abstract class Person {
+public  class Person {
     private final int id;
     private final String fullName;
     private String address;
@@ -11,7 +12,16 @@ public abstract class Person {
     private String email;
     private final LocalDate dateOfBirth;
 
-    protected Person(int id, String fullName, String address, String phone, String email, LocalDate dateOfBirth) {
+    public Person(int id, String fullName, String address, String phone, String email, LocalDate dateOfBirth) {
+        if(id<0){
+            throw new RuntimeException("Enter a valid id");
+        }
+        
+    String regEx = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+    if (email == null || !Pattern.matches(regEx, email)) {
+        throw new IllegalArgumentException("Enter a valid email address");
+    }            
+        
         this.id = id;
         this.fullName = fullName;
         this.address = address;
@@ -20,9 +30,16 @@ public abstract class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    protected Person(int id, String fullName, LocalDate dateOfBirth) {
+    public Person(int id, String fullName, LocalDate dateOfBirth) {
+        if(id<0){
+            throw new RuntimeException("Enter a valid id");
+        }
+        if(dateOfBirth == null || fullName == null ){
+            throw new NullPointerException("enter ");
+        } 
+        
         this.id = id;
-        this.fullName = fullName;
+        this.fullName = fullName;        
         this.dateOfBirth = dateOfBirth;
     }
 
